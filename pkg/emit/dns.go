@@ -15,7 +15,7 @@ func EmitDns(value string) error {
 
 	go func() {
 		msg := new(dns.Msg)
-		msg.SetQuestion(value, dns.TypeA)
+		msg.SetQuestion(dns.Fqdn(value), dns.TypeA)
 
 		ans, err := dns.Exchange(msg, "8.8.8.8:53")
 		if err == nil {
