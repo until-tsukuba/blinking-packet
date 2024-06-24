@@ -42,7 +42,7 @@ func DumpAndBlink(device string, ledCount int, delay int) {
 		parsedPacket := parse.Parse(packet, interfaceInfo)
 		colors := colorSequence(parsedPacket)
 		seq := BlinkSequence{colors, parsedPacket.Reversed}
-		for i := 0; i < 60; i++ {
+		for i := -20; i < ledCount+20; i++ {
 			blink.Blink(seq, i)
 			time.Sleep(time.Millisecond * time.Duration(delay))
 		}
