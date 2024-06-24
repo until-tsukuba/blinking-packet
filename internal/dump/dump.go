@@ -6,6 +6,7 @@ import (
 	"github.com/until-tsukuba/blinking-packet/pkg/blink"
 	"github.com/until-tsukuba/blinking-packet/pkg/parse"
 	"net"
+	"slices"
 	"time"
 )
 
@@ -69,6 +70,9 @@ func colorSequence(packetLayers parse.ParsedPacket) []uint32 {
 		for i := 0; i < 5; i++ {
 			colors = append(colors, toLedColor(r, g, b))
 		}
+	}
+	if !packetLayers.Reversed {
+		slices.Reverse(colors)
 	}
 	return colors
 }
