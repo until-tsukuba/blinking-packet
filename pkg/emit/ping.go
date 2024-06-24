@@ -9,6 +9,7 @@ func EmitPing(value string) error {
 	}
 
 	go func() {
+		pinger.Count = 1
 		err = pinger.Run()
 	}()
 
