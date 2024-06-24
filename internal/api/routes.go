@@ -15,7 +15,5 @@ func (srv *server) setRoutes() {
 		})
 	})
 
-	engine.POST("/emit", func(ctx *gin.Context) {
-		// TODO
-	})
+	engine.POST("/emit", emitController)
 }
