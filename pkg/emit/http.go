@@ -20,7 +20,9 @@ func EmitHttp(value string) error {
 		if err != nil {
 			return
 		}
-		defer resp.Body.Close()
+		defer func(Body io.ReadCloser) {
+			_ = Body.Close()
+		}(resp.Body)
 
 		_, _ = io.ReadAll(resp.Body)
 	}()
