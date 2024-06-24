@@ -23,7 +23,8 @@ func SetUpWS2812(mLedCount int) {
 	opt.Channels[0].LedCount = ledCount
 	opt.Channels[0].GpioPin = 18
 
-	dev, err := ws2811.MakeWS2811(&opt)
+	d, err := ws2811.MakeWS2811(&opt)
+	dev = d
 	if err != nil {
 		panic(err)
 	}
