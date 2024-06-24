@@ -46,10 +46,10 @@ func Blink(seq Sequence, diff int) {
 		if reversed {
 			ledi = ledCount - i - 1
 		}
-		if i < diff || i >= length+diff {
-			dev.Leds(0)[ledi] = 0
-		} else {
+		if i-diff >= 0 && i-diff < length {
 			dev.Leds(0)[ledi] = colors[i-diff]
+		} else {
+			dev.Leds(0)[ledi] = 0
 		}
 	}
 
