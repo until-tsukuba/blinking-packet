@@ -30,7 +30,7 @@ func newServer() server {
 	corsConfig.AllowAllOrigins = true
 	srv.engine.Use(cors.New(corsConfig))
 
-	// srv.setRoutes()
+	srv.setRoutes()
 
 	return srv
 }
