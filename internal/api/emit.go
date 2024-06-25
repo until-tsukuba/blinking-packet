@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/until-tsukuba/blinking-packet/pkg/emit"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -19,10 +20,9 @@ func emitController(ctx *gin.Context) {
 		return
 	}
 
-	switch req.PacketType {
-	// TODO
-	default:
-		ctx.JSON(http.StatusBadRequest, gin.H{"message": "Invalid packet type"})
+	err = emit.EmitPacket(req.PacketType, req.Value)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
 		return
 	}
 
