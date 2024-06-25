@@ -12,7 +12,7 @@ func ProtocolToColor(protocol string) (int, int, int) {
 	switch protocol {
 	case "ETHERNET":
 		// brown
-		return 3, 2, 2
+		return 3, 2, 0
 	case "ARP":
 		// pink
 		return 3, 1, 3
@@ -30,7 +30,7 @@ func ProtocolToColor(protocol string) (int, int, int) {
 		return 3, 1, 1
 	case "DNS":
 		// orange
-		return 3, 2, 1
+		return 4, 2, 0
 	case "HTTP":
 		// blue
 		return 1, 1, 3
@@ -51,14 +51,14 @@ type Layer struct {
 
 func Parse(packet gopacket.Packet, interfaceInfo net.Interface) ParsedPacket {
 	var layerList = make([]Layer, 0)
-	var reversed = false
+	var reversed = true
 
 	if ethLayer := packet.Layer(layers.LayerTypeEthernet); ethLayer != nil {
 		layerList = append(layerList, Layer{ProtocolName: "ETHERNET"})
 		source := ethLayer.(*layers.Ethernet).SrcMAC
 		interfaceMac := interfaceInfo.HardwareAddr
 		if source.String() == interfaceMac.String() {
-			reversed = true
+			reversed = false
 		}
 	}
 
