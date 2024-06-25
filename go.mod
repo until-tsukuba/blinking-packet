@@ -5,10 +5,10 @@ go 1.21.10
 require (
 	github.com/gin-contrib/cors v1.7.2
 	github.com/gin-gonic/gin v1.10.0
-	github.com/google/gopacket v1.1.19
-	github.com/rpi-ws281x/rpi-ws281x-go v1.0.10
 	github.com/go-ping/ping v1.1.0
+	github.com/google/gopacket v1.1.19
 	github.com/miekg/dns v1.1.61
+	github.com/rpi-ws281x/rpi-ws281x-go v1.0.10
 )
 
 require (
