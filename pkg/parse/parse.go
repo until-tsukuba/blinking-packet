@@ -12,7 +12,7 @@ func ProtocolToColor(protocol string) (int, int, int) {
 	switch protocol {
 	case "ETHERNET":
 		// brown
-		return 3, 2, 2
+		return 3, 2, 0
 	case "ARP":
 		// pink
 		return 3, 1, 3
@@ -30,7 +30,7 @@ func ProtocolToColor(protocol string) (int, int, int) {
 		return 3, 1, 1
 	case "DNS":
 		// orange
-		return 3, 2, 1
+		return 4, 2, 0
 	case "HTTP":
 		// blue
 		return 1, 1, 3
