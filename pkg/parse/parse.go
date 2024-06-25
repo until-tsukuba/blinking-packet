@@ -51,14 +51,14 @@ type Layer struct {
 
 func Parse(packet gopacket.Packet, interfaceInfo net.Interface) ParsedPacket {
 	var layerList = make([]Layer, 0)
-	var reversed = false
+	var reversed = true
 
 	if ethLayer := packet.Layer(layers.LayerTypeEthernet); ethLayer != nil {
 		layerList = append(layerList, Layer{ProtocolName: "ETHERNET"})
 		source := ethLayer.(*layers.Ethernet).SrcMAC
 		interfaceMac := interfaceInfo.HardwareAddr
 		if source.String() == interfaceMac.String() {
-			reversed = true
+			reversed = false
 		}
 	}
 

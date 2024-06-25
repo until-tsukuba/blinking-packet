@@ -71,9 +71,7 @@ func colorSequence(packetLayers parse.ParsedPacket) []uint32 {
 			colors = append(colors, toLedColor(r, g, b))
 		}
 	}
-	if !packetLayers.Reversed {
-		slices.Reverse(colors)
-	}
+	slices.Reverse(colors)
 	return colors
 }
 
